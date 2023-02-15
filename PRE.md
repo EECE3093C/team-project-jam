@@ -24,7 +24,7 @@ so you spend less time worrying about the songs and more time enjoying it.
 
 
 ## SOFTWARE
-The code will use spotify API to interact with spotify, JavaSciprt/HTMl/CSS through angular 
+The code will use spotify API to interact with spotify, JavaScript/HTMl/CSS through angular 
 for the front end, the back end will use C++ and our data will be stored in SQL database.
 
 ## Challenge
