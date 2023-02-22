@@ -1,0 +1,48 @@
+@use '@angular/material' as mat;
+
+@include mat.core();
+
+$my-primary: mat.define-palette(mat.$gray-palette, 900);
+$my-accent: mat.define-palette(mat.$green-palette, A400);
+
+$red-palette: mat.define-palette(mat.$red-palette, 500);
+
+$my-theme: mat.define-dark-theme((
+    color: (
+        primary: $my-primary,
+        accent: $my-accent,
+    ),
+    typography: mat.define-typography-config(),
+    density: 0,
+));
+
+$red-theme: mat.define-dark-theme((
+    color: (
+        primary: $red-palette,
+        accent: $red-palette,
+    ),
+    typography: mat.define-typography-config(),
+    density: 0,
+));
+
+@include mat.core-theme($my-theme);
+@include mat.all-component-themes($my-theme);
+
+:root {
+    --spotify-green: #76FF03;
+    --accent-grey: #212121;
+}
+
+h1 {
+    color: var(--spotify-green);
+}
+
+body {
+    background-color: var(--accent-grey);
+}
+
+img {
+    width:100;
+    height:100;
+    object-fit: cover;
+}
