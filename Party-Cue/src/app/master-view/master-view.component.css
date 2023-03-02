@@ -1,0 +1,36 @@
+.color-green
+{
+    background-color: green;
+}
+
+.color-red
+{
+    background-color: red;
+}
+
+.color-purple
+{
+    background-color: purple;
+}
+
+.color-pink
+{
+    background-color: pink;
+}
+
+
+.color-orange
+{
+    background-color: orange;
+}
+
+.userdiv
+{
+    display:flex;
+}
+
+.userdivcontainer
+{
+    display:flex;
+    flex-direction: column;
+}

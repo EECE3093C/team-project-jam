@@ -1,0 +1,110 @@
+<mat-grid-list cols="8">
+    <!-- Row 1-->
+    <mat-grid-tile  [colspan]="6">
+
+    </mat-grid-tile>
+    <mat-grid-tile class="color-green" [colspan]="2">
+        <img src="../../assets/search.jpg">
+    </mat-grid-tile>
+
+    <!-- Row 2-->
+    <mat-grid-tile [colspan]="1">
+
+    </mat-grid-tile>
+    <mat-grid-tile class="color-red" [colspan]="2" [rowspan]="3">
+        <div class="userdivcontainer">
+            <div class="userdiv">
+                <h1>Song 1</h1>
+            </div>
+            <div class="userdiv">
+                <h1>Song 2</h1>
+            </div>
+            <div class="userdiv">
+                <h1>Song 3</h1>
+            </div>
+        </div>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="2">
+
+    </mat-grid-tile>
+    <mat-grid-tile  class="color-pink"[colspan]="2" [rowspan]="3">
+        <div class="userdivcontainer">
+            <div class="userdiv">
+                <img src="../../assets/user.png" width="50" height="50">
+                <h1>Username       </h1>
+                <img src="../../assets/trash.png" width="50" height="50">
+            </div>
+            <div class="userdiv">
+                <img src="../../assets/user.png" width="50" height="50">
+                <h1>Username       </h1>
+                <img src="../../assets/trash.png" width="50" height="50">
+            </div>
+            <div class="userdiv">
+                <img src="../../assets/user.png" width="50" height="50">
+                <h1>Username       </h1>
+                <img src="../../assets/trash.png" width="50" height="50">
+            </div>
+        </div>
+    </mat-grid-tile>
+
+    <!-- Row 3-->
+    <mat-grid-tile [colspan]="2">
+
+    </mat-grid-tile>
+    <!-- Row 4-->
+    <mat-grid-tile [colspan]="2">
+
+    </mat-grid-tile>
+
+    <!-- Row 5-->
+    <mat-grid-tile  [colspan]="2">
+
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="4">
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="2">
+
+    </mat-grid-tile>
+</mat-grid-list>
+<h1>Spotify</h1>
+
+<button id="togglePlay">toggle</button>
+<script src="https://sdk.scdn.co/spotify-player.js"></script>
+<script>
+    window.onSpotifyWebPlaybackSDKReady = () => {
+            const token = 'BQCOSDDmkGw6fiKAzV4Bg7JbBfGK8KYaEth-lY_FvxH7D2BymnaSEd5vuFfCiEuFb_bKEdYf4pXXnCfiDx5VAwOQtNHd1HoShkPkXIQq_2EWtlIFI5bi8ZxiUqRtyzaDalbXV6LqJnM0FK4_y6cGorjBBOA1b0QRpZgIjSKLP2A_f6JzzZHdiaPz6WeN_9A5SELDiHYLig';
+            const player = new Spotify.Player({
+                name: 'Web Playback SDK Quick Start Player',
+                getOAuthToken: cb => { cb(token); },
+                volume: 0.5
+            });
+
+            // Ready
+            player.addListener('ready', ({ device_id }) => {
+                console.log('Ready with Device ID', device_id);
+            });
+
+            // Not Ready
+            player.addListener('not_ready', ({ device_id }) => {
+                console.log('Device ID has gone offline', device_id);
+            });
+
+            player.addListener('initialization_error', ({ message }) => {
+                console.error(message);
+            });
+
+            player.addListener('authentication_error', ({ message }) => {
+                console.error(message);
+            });
+
+            player.addListener('account_error', ({ message }) => {
+                console.error(message);
+            });
+
+            document.getElementById('togglePlay').onclick = function() {
+              player.togglePlay();
+            };
+            
+            player.connect();
+        }
+</script>
