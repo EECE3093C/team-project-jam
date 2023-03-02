@@ -12,6 +12,7 @@ from sqlalchemy.orm import Mapped
 from sqlalchemy.orm import mapped_column
 from sqlalchemy.orm import relationship
 from sqlalchemy.orm import Session
+from sqlalchemy import create_engine
 class Base(DeclarativeBase):
      pass
 class BackLog(Base):
@@ -42,10 +43,7 @@ class UserList(Base):
     Connection: Mapped[str] = mapped_column(String,nullable= True)
     Rank: Mapped[int] = mapped_column()
 def BuildDb():
-    cwd = os.getcwd()   
-    link = f"{cwd}\\db.db"
-    print(link)
-    dbEngine=sqlalchemy.create_engine(f'sqlite:///C:\\Users\\patri\\team_project_jam\\S.db', echo = True) #make path variable pull from web front end
+    dbEngine=sqlalchemy.create_engine(f'sqlite:////Query.db') #make path variable pull from web front end
     Base.metadata.create_all(dbEngine)
     return link,dbEngine
 def AddUser(Name,Host,engine):
@@ -56,7 +54,7 @@ def AddUser(Name,Host,engine):
             Rank = 0,
         )
         session.add_all([NewUser])
-        session.commit
+        session.commit()
 def AddSong(Song,Artist,URL,UserId,engine):
     with Session(engine) as session:
         stmt = select(MasterQueue.UserQueuePosition).where(MasterQueue.UserId.in_([UserId]))
@@ -72,7 +70,7 @@ def AddSong(Song,Artist,URL,UserId,engine):
             UserQueuePosisiton = UserQueuePos,
         )
         session.add_all([Song])
-        session.commit
+        session.commit()
 BuildDb()
 print("hello World")
         
